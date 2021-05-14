@@ -5,9 +5,17 @@ describe Alphavantage::Configuration do
 
   it 'should set the configuration with a config block' do
     Alphavantage.configure do |config|
-      config.api_key = 'someKey'
+      config.api_keys = ['someKey']
     end
 
-    expect(Alphavantage.configuration.api_key).to eq('someKey')
+    expect(Alphavantage.configuration.api_keys).to eq(['someKey'])
+  end
+
+  it 'should set convert #api_keys to Array' do
+    Alphavantage.configure do |config|
+      config.api_keys = 'someKey'
+    end
+
+    expect(Alphavantage.configuration.api_keys).to eq(['someKey'])
   end
 end

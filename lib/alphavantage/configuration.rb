@@ -10,6 +10,10 @@ module Alphavantage
   end
 
   class Configuration
-    attr_accessor :api_key
+    attr_reader :api_keys
+
+    def api_keys=(other)
+      @api_keys = Array(other)
+    end
   end
 end

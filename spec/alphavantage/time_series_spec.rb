@@ -2,7 +2,7 @@
 describe Alphavantage::TimeSeries do
   before do
     Alphavantage.configure do |config|
-      config.api_key = 'someKey'
+      config.api_keys = 'someKey'
     end
   end
 
@@ -51,9 +51,9 @@ describe Alphavantage::TimeSeries do
       stub_request(:get, "https://www.alphavantage.co/query?apikey=someKey&function=TIME_SERIES_MONTHLY&symbol=TSLA").
         to_return(status: 200, body: file_fixture("time_series/monthly.json"), headers: {})
     end
-    
+
     it 'returns meta data' do
-      expect(subject.meta_data).to have_attributes({ 
+      expect(subject.meta_data).to have_attributes({
         information: "Monthly Prices (open, high, low, close) and Volumes",
         last_refreshed: "2021-04-23",
         symbol: "TSLA",
@@ -79,7 +79,7 @@ describe Alphavantage::TimeSeries do
       end
 
       it 'returns meta data' do
-        expect(subject.meta_data).to have_attributes({ 
+        expect(subject.meta_data).to have_attributes({
           information: "Monthly Adjusted Prices and Volumes",
           last_refreshed: "2021-04-23",
           symbol: "TSLA",
@@ -107,9 +107,9 @@ describe Alphavantage::TimeSeries do
       stub_request(:get, "https://www.alphavantage.co/query?apikey=someKey&function=TIME_SERIES_WEEKLY&symbol=TSLA").
         to_return(status: 200, body: file_fixture("time_series/weekly.json"), headers: {})
     end
-    
+
     it 'returns meta data' do
-      expect(subject.meta_data).to have_attributes({ 
+      expect(subject.meta_data).to have_attributes({
         information: "Weekly Prices (open, high, low, close) and Volumes",
         last_refreshed: "2021-04-23",
         symbol: "TSLA",
@@ -135,7 +135,7 @@ describe Alphavantage::TimeSeries do
       end
 
       it 'returns meta data' do
-        expect(subject.meta_data).to have_attributes({ 
+        expect(subject.meta_data).to have_attributes({
           information: "Weekly Adjusted Prices and Volumes",
           last_refreshed: "2021-04-23",
           symbol: "TSLA",
@@ -163,9 +163,9 @@ describe Alphavantage::TimeSeries do
       stub_request(:get, "https://www.alphavantage.co/query?apikey=someKey&function=TIME_SERIES_DAILY&outputsize=compact&symbol=TSLA").
         to_return(status: 200, body: file_fixture("time_series/daily.json"), headers: {})
     end
-    
+
     it 'returns meta data' do
-      expect(subject.meta_data).to have_attributes({ 
+      expect(subject.meta_data).to have_attributes({
         information: "Daily Prices (open, high, low, close) and Volumes",
         last_refreshed: "2021-04-23",
         symbol: "TSLA",
@@ -199,7 +199,7 @@ describe Alphavantage::TimeSeries do
       end
 
       it 'returns meta data' do
-        expect(subject.meta_data).to have_attributes({ 
+        expect(subject.meta_data).to have_attributes({
           information: "Daily Time Series with Splits and Dividend Events",
           last_refreshed: "2021-04-23",
           symbol: "TSLA",
@@ -231,7 +231,7 @@ describe Alphavantage::TimeSeries do
     end
 
     it 'returns meta data' do
-      expect(subject.meta_data).to have_attributes({ 
+      expect(subject.meta_data).to have_attributes({
         information: "Intraday (5min) open, high, low, close prices and volume",
         last_refreshed: "2021-04-23 20:00:00",
         symbol: "TSLA",

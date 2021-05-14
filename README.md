@@ -22,15 +22,17 @@ Or install it yourself as:
 ## Usage
 
 The library needs to be configured with your account's api key which you can obtain from https://www.alphavantage.co/support/#api-key.
-Set the `Alphavantage.configuration.api_key` to its value. If you are using Rails, you can configure this in an initializer.
+Set the `Alphavantage.configuration.api_keys` to its value. If you are using Rails, you can configure this in an initializer.
 
 ```
 require 'alphavantage'
 
 Alphavantage.configure do |config|
-  config.api_key = 'your-api-key'
+  config.api_keys = 'your-api-key'
 end
 ```
+
+If `Array` of keys provided then it will be fetched a random one of them for each request.
 
 ### Accessing a response object
 All JSON responses are converted to pseudo-objects that have method-like accessors for hash keys
@@ -42,9 +44,9 @@ quote.volume         #=> "27879033"
 
 All hash keys are also normalized to provide clean and consistent access to values since the Alphavantage API returns arbitrarily formatted keys with numbers, spaces, letters and symbols (i.e. "Crypto Rating (FCAS)", "3. fcas rating", "4. Last Refreshed", "Time Series FX (5min)", "1a. open (CNY)")
 
-With this normalization, you can now access via 
+With this normalization, you can now access via
 
-`intraday.time_series_fx_5min` 
+`intraday.time_series_fx_5min`
 
 instead of
 
@@ -105,9 +107,9 @@ indicator.sma(time_period: 7, series_type: 'close')
 indicator.macd(series_type: 'open', fastperiod: 12, slowperiod: 26, signalperiod: 9)
 
 indicator.macdext(
-  series_type:, 
-  fastperiod: 12, 
-  slowperiod: 26, 
+  series_type:,
+  fastperiod: 12,
+  slowperiod: 26,
   signalperiod: 9,
   fastmatype: 'sma',
   slowmatype: 'sma',

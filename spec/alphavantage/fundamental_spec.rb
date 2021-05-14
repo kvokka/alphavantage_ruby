@@ -1,7 +1,7 @@
 describe Alphavantage::Fundamental do
   before do
     Alphavantage.configure do |config|
-      config.api_key = 'someKey'
+      config.api_keys = 'someKey'
     end
   end
 

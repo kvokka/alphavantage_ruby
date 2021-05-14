@@ -1,7 +1,7 @@
 describe Alphavantage::Forex do
   before do
     Alphavantage.configure do |config|
-      config.api_key = 'demo'
+      config.api_keys = 'demo'
     end
   end
 

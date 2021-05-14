@@ -1,7 +1,7 @@
 describe Alphavantage::Crypto do
   before do
     Alphavantage.configure do |config|
-      config.api_key = 'demo'
+      config.api_keys = 'demo'
     end
   end
 
@@ -27,7 +27,7 @@ describe Alphavantage::Crypto do
     end
 
     it 'returns meta data' do
-      expect(subject.meta_data).to have_attributes({ 
+      expect(subject.meta_data).to have_attributes({
         information: "Crypto Intraday (5min) Time Series"
       })
     end
@@ -57,7 +57,7 @@ describe Alphavantage::Crypto do
         to_return(status: 200, body: file_fixture("crypto/daily.json"), headers: {})
     end
     it 'returns meta data' do
-      expect(subject.meta_data).to have_attributes({ 
+      expect(subject.meta_data).to have_attributes({
         information: "Daily Prices and Volumes for Digital Currency"
       })
     end
@@ -75,7 +75,7 @@ describe Alphavantage::Crypto do
         to_return(status: 200, body: file_fixture("crypto/weekly.json"), headers: {})
     end
     it 'returns meta data' do
-      expect(subject.meta_data).to have_attributes({ 
+      expect(subject.meta_data).to have_attributes({
         information: "Weekly Prices and Volumes for Digital Currency"
       })
     end
@@ -93,7 +93,7 @@ describe Alphavantage::Crypto do
         to_return(status: 200, body: file_fixture("crypto/monthly.json"), headers: {})
     end
     it 'returns meta data' do
-      expect(subject.meta_data).to have_attributes({ 
+      expect(subject.meta_data).to have_attributes({
         information: "Monthly Prices and Volumes for Digital Currency"
       })
     end
